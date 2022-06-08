@@ -25,7 +25,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
  */
 @Configuration
 public class KafkaConsumerConfig {
-    /*
+    
      private String bootstrapServers = "localhost:9092";
     
     public Map<String, Object> consumerConfig(){
@@ -51,5 +51,5 @@ public class KafkaConsumerConfig {
         factory.setConsumerFactory(consumerFactory);
         
         return factory;
-      }*/
+      }
 }

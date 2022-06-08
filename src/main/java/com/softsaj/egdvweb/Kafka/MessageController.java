@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
-    /*
+    
     private KafkaTemplate<String, String> kafkaTemplate; 
 
     public MessageController(KafkaTemplate<String, String> kafkaTemplate) {
@@ -28,5 +28,5 @@ public class MessageController {
     public void pblish(@RequestBody MessageRequest request){
         kafkaTemplate.send("vendas", request.getMessage());
     }
-*/
+
 }

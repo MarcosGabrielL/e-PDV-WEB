@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListeners {
     
-   /* @KafkaListener(topics = "vendas", groupId = "groupId")
+    @KafkaListener(topics = "vendas", groupId = "groupId")
     void Listener(String data){
       //  System.out.println("Listener receive: "+data);
     }
-    */
+    
 }

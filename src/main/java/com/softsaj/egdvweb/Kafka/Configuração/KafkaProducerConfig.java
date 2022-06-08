@@ -22,7 +22,7 @@ import org.springframework.kafka.core.ProducerFactory;
 @Configuration
 public class KafkaProducerConfig {
     
-    /*
+    
     private String bootstrapServers = "localhost:9092";
     
     public Map<String, Object> producerConfig(){
@@ -42,6 +42,6 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, String> kafkaTemplate(
     ProducerFactory<String, String> producerFactory){
         return new KafkaTemplate<>(producerFactory);
-    }*/
+    }
     
 }
