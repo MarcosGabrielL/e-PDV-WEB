@@ -15,8 +15,8 @@ package com.softsaj.egdvweb.Vendas.controllers;
  * @author Marcos
  */
 
-import com.softsaj.egdvweb.Vendas.file.FileDB;
-import com.softsaj.egdvweb.Vendas.file.FileStorageService;
+import com.softsaj.egdvweb.Vendas.File.FileDB;
+import com.softsaj.egdvweb.Vendas.File.FileStorageService;
 import com.softsaj.egdvweb.Vendas.models.Produto;
 import com.softsaj.egdvweb.Vendas.models.ProdutoDTO;
 import com.softsaj.egdvweb.Vendas.repositories.ProdutoRepository;

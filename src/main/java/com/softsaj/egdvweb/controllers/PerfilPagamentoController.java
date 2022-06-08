@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +48,7 @@ public class PerfilPagamentoController {
     //GEt PerfilPagamento
      @GetMapping("/perfil/{id}")
     public ResponseEntity<PerfilPagamento> getCienfiloById (@PathVariable("id") Long id
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
         
        
         
@@ -58,7 +59,7 @@ public class PerfilPagamentoController {
     
     @GetMapping("/perfil/user/{email}")
     public ResponseEntity<PerfilPagamento> getCienfiloByUser (@PathVariable("email") String email
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
         
        
         
@@ -68,7 +69,7 @@ public class PerfilPagamentoController {
     
     
     @PostMapping("/perfil/add")
-    public ResponseEntity<PerfilPagamento> addPerfilPagamento(@RequestBody PerfilPagamento movie,@RequestParam("token") String token) {
+    public ResponseEntity<PerfilPagamento> addPerfilPagamento(@RequestBody PerfilPagamento movie,@RequestHeader("Authorization") String token) {
         
         
         
@@ -82,7 +83,7 @@ public class PerfilPagamentoController {
     
     @PutMapping("/perfil/update/{id}")
     public ResponseEntity<PerfilPagamento> updatePerfilPagamento(@PathVariable("id") Long id, @RequestBody PerfilPagamento newperfil
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
         
         
@@ -97,7 +98,7 @@ public class PerfilPagamentoController {
     @Transactional
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deletePerfilPagamento(@PathVariable("id") Long id
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
       
         

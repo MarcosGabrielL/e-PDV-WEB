@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,7 +50,7 @@ public class DominioController {
     //GEt Dominio
      @GetMapping("/dominio/{id}")
     public ResponseEntity<Dominio> getCienfiloById (@PathVariable("id") Long id
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
         
         Dominio dominio = vs.findDominioById(id);
         return new ResponseEntity<>(dominio, HttpStatus.OK);
@@ -57,7 +58,7 @@ public class DominioController {
     
      @GetMapping("/dominio/usuario/{email}")
     public ResponseEntity<List<Dominio>> findByEmail (@PathVariable("email") String email
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
         
        
         
@@ -67,7 +68,7 @@ public class DominioController {
     
     
     @PostMapping("/dominio/add")
-    public ResponseEntity<Dominio> addDominio(@RequestBody Dominio movie, @RequestParam("token") String token) {
+    public ResponseEntity<Dominio> addDominio(@RequestBody Dominio movie, @RequestHeader("Authorization") String token) {
         
         Dominio newDominio = vs.addDominio(movie);
         URI uri = ServletUriComponentsBuilder.
@@ -79,7 +80,7 @@ public class DominioController {
     //Update nome,telefone,idade,foto;
     @PutMapping("/dominio/update/{id}")
     public ResponseEntity<Dominio> updateDominio(@PathVariable("id") Long id, @RequestBody Dominio newdominio
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
         
         
@@ -97,7 +98,7 @@ public class DominioController {
     @Transactional
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteDominio(@PathVariable("id") Long id
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
       
         

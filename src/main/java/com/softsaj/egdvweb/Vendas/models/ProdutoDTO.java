@@ -4,7 +4,7 @@
  */
 package com.softsaj.egdvweb.Vendas.models;
 
-import com.softsaj.egdvweb.Vendas.file.FileDB;
+import com.softsaj.egdvweb.Vendas.File.FileDB;
 import java.io.File;
 import java.util.List;
 

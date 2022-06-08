@@ -1,18 +1,3 @@
-## e-GDV 5.0 Web
-
-- Tratamento de dados Websocket em kafka para notificações e chat
-- Processamento assíncrono de Reqisições HTTP e AMQP com RabbitMQ para processamento de vendas ( Envio de NFe/XML com as informações fiscais transmitidas para a SEFAZ)
-- Nfe/XML assinado digitalmente baseado no pacote javax.xml.crypto.dsig para garantir a integridade dos dados e comprovar a autoria de seu emissor.
-
-### O build gera um spring user e um spring group para compilar e executar o aplicativo:
-
-```ruby
-docker build -t springio/gs-spring-boot-docker .
-docker run -p 8080:8080 springio/gs-spring-boot-docker
-```
-### docker-compose
-
-```ruby
 version: '3'
 
 services:
@@ -24,7 +9,7 @@ services:
     volumes:
       - /data/egdvweb
     ports:
-      - "8080:8080"
+      - "8081:8081"
       
   zoo1:
     image: zookeeper:3.4.9
@@ -52,5 +37,3 @@ kafka1:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zoo1
-```
-

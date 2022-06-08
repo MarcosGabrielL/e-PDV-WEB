@@ -6,6 +6,7 @@ package com.softsaj.egdvweb.controllers;
 
 
 import com.softsaj.egdvweb.models.Vendedor;
+import com.softsaj.egdvweb.security.JwtUtil;
 import com.softsaj.egdvweb.services.VendedorService;
 import java.net.URI;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +44,9 @@ public class VendedorController {
     
      @Autowired
     private VendedorService vs;
+     
+      @Autowired
+    private JwtUtil jwt;
     
     @GetMapping
     public ResponseEntity<List<Vendedor>> getAll() {
@@ -52,39 +57,49 @@ public class VendedorController {
     //GEt Vendedor
      @GetMapping("/vendedor/{id}")
     public ResponseEntity<Vendedor> getCienfiloById (@PathVariable("id") Long id
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
+        
+        if(jwt.IsValidToken(token, id.toString())){
         
         Vendedor vendedor = vs.findVendedorById(id);
         return new ResponseEntity<>(vendedor, HttpStatus.OK);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
      @GetMapping("/vendedor/usuario/{email}")
     public ResponseEntity<List<Vendedor>> findByEmail (@PathVariable("email") String email
-             ,@RequestParam("token") String token) {
+             ,@RequestHeader("Authorization") String token) {
         
-       
-        
-        List<Vendedor> movies = vs.findByEmail(email);
-        return new ResponseEntity<>(movies, HttpStatus.OK);
+         if(jwt.IsValidToken(token, email)){
+                List<Vendedor> movies = vs.findByEmail(email);
+                return new ResponseEntity<>(movies, HttpStatus.OK);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
     
     @PostMapping("/vendedor/add")
-    public ResponseEntity<Vendedor> addVendedor(@RequestBody Vendedor movie, @RequestParam("token") String token) {
-        
+    public ResponseEntity<Vendedor> addVendedor(@RequestBody Vendedor movie, @RequestHeader("Authorization") String token) {
+         if(jwt.IsValidToken(token, movie.getEmail())){
         Vendedor newVendedor = vs.addVendedor(movie);
         URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/vendedor/{id}").buildAndExpand(movie.getId()).toUri();
         
         return new ResponseEntity<>(newVendedor, HttpStatus.CREATED);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
     //Update nome,telefone,idade,foto;
     @PutMapping("/vendedor/update/{id}")
     public ResponseEntity<Vendedor> updateVendedor(@PathVariable("id") Long id, @RequestBody Vendedor newvendedor
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
-        
+         if(jwt.IsValidToken(token, newvendedor.getEmail())){
         
         Vendedor vendedor = vs.findVendedorById(id);
         //vendedor.setNome(newvendedor.getNome());
@@ -93,12 +108,15 @@ public class VendedorController {
         //vendedor.setFoto(newvendedor.getFoto());
         Vendedor updateVendedor = vs.updateVendedor(vendedor);//s
         return new ResponseEntity<>(updateVendedor, HttpStatus.OK);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
     @PostMapping("/vendedor/update/escolheu/{id}")
     public ResponseEntity<Vendedor> updateVVendedor(@PathVariable("id") Long id, @RequestBody Vendedor newvendedor
-            ,@RequestParam("token") String token){
-        
+            ,@RequestHeader("Authorization") String token){
+          if(jwt.IsValidToken(token, newvendedor.getEmail())){
         Locale locale = new Locale("pt","BR");
                 GregorianCalendar calendar = new GregorianCalendar();
                 SimpleDateFormat formatador1 = new SimpleDateFormat("YYYY-MM-dd",locale);
@@ -118,17 +136,23 @@ public class VendedorController {
         
         Vendedor updateVendedor = vs.updateVendedor(newvendedor);//s
         return new ResponseEntity<>(updateVendedor, HttpStatus.OK);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
     @Transactional
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteVendedor(@PathVariable("id") Long id
-            ,@RequestParam("token") String token) {
+            ,@RequestHeader("Authorization") String token) {
         
-      
+        if(jwt.IsValidToken(token, id.toString())){
         
         vs.deleteVendedor(id);
         return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            throw new IllegalStateException("token invalid");
+        }
     }
     
     

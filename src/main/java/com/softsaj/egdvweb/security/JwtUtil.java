@@ -68,5 +68,9 @@ public class JwtUtil {
         return (tokenemail.equals(email) && !isTokenExpired(token));
     }
     
+    public Boolean IsValidToken(String token, String email){
+        
+        return !isTokenExpired(token) && validateToken(token, email);
+    }
    
 }
