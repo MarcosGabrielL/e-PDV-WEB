@@ -78,31 +78,27 @@ public CloseableHttpClient httpClient() {
         return super.authenticationManagerBean();
     }
     
-      @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
-    }
+    
     
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // http.cors().disable();//.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
 
-        http.cors().and()
+        http
 	  .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/perfispagamento/**","/vendedores/**","/islogged/**", "/forgot_password/**",
-                             "/reset_password/**", "/register", "/*", "/user/**", "/cinefilos/**", "/textoes/**",
-                             "/files/**", "/file/**","/auth/**","/resultpagos/**","/preferences/**",
+                .antMatchers("/forgot_password/**","/reset_password/**",  "/process_register/**").permitAll()
+                .antMatchers("/users","/perfispagamento/**","/vendedores/**","/islogged/**", 
+                             "/*","/cinefilos/**", "/textoes/**","/register","/user/**",
+                             "/auth/**","/files/**", "/file/**","/auth/**","/resultpagos/**",
+                             "/preferences/**",
                              "/eventos/**","/vendidos/**","/files/**", "/filelist/**", "/download/**",
-                             "/create/**","/generic/**","/notifications/**","/produtos/**", "/register",
+                             "/create/**","/generic/**","/notifications/**","/produtos/**", 
                              "/user/**", "/cinefilos/**", "/textoes/**", "/uploadFile/**", "/file/**",
-		             "/loja/**", "/vendas/**", "/auth/**", "/fretes/**", "/dominios/**", "/process_register/**").permitAll()
-                .antMatchers("/users").authenticated()
+		             "/loja/**", "/vendas/**", "/fretes/**", "/dominios/**","/register" ).authenticated()
                 .antMatchers("/authenticate")
                 .permitAll().anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()

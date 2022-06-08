@@ -4,7 +4,7 @@
 - Processamento assíncrono de Reqisições HTTP e AMQP com RabbitMQ para processamento de vendas ( Envio de NFe/XML com as informações fiscais transmitidas para a SEFAZ)
 - Nfe/XML assinado digitalmente baseado no pacote javax.xml.crypto.dsig para garantir a integridade dos dados e comprovar a autoria de seu emissor.
 
-### O build gera um spring user e um spring group para compilar e executar o aplicativo:
+### No Diretorio do aplicativo use os comandos abaixo para compilar e executar o aplicativo:
 
 ```ruby
 docker build -t springio/gs-spring-boot-docker .
