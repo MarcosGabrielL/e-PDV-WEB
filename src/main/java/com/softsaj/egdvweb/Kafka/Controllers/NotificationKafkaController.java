@@ -4,8 +4,8 @@
  */
 package com.softsaj.egdvweb.Kafka.Controllers;
 
-import com.softsaj.egdvweb.Kafka.Model.Message;
-import com.softsaj.egdvweb.Kafka.Services.MessageService;
+import com.softsaj.egdvweb.Kafka.Services.NotificationService;
+import com.softsaj.egdvweb.Vendas.models.Notification;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,15 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/message")
-public class MessageController {
+public class NotificationKafkaController {
     
     
-    private MessageService notificationService = new MessageService();
+    private NotificationService notificationService = new NotificationService();
 
     
 
     @PostMapping("/send")
-    public ResponseEntity<Void> sendMessage(@RequestBody Message notification) {
+    public ResponseEntity<Void> sendNotification(@RequestBody Notification notification) {
         notificationService.send(notification);
         return new ResponseEntity<>(HttpStatus.OK);
     }

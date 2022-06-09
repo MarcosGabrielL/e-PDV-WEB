@@ -6,7 +6,7 @@ package com.softsaj.egdvweb.Kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softsaj.egdvweb.Kafka.Exception.MapperException;
-import com.softsaj.egdvweb.Kafka.Model.Message;
+import com.softsaj.egdvweb.Vendas.models.Notification;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -28,7 +28,7 @@ public class KafkaListeners {
     @KafkaListener(topics = "notification", groupId = "notification-group-id", containerFactory = "kakfaListenerContainerFactory")
     public void listenSenderEmail(String data) {
 
-        Message notification = fromJson(data, Message.class);
+        Notification notification = fromJson(data, Notification.class);
         log.info("Consumed message: " + data);
         template.convertAndSend("/topic/notif", notification);
 

@@ -13,7 +13,6 @@ public class Message {
     
     private Long id;
     private String content;
-     private NotificationType type;
 
     public Long getId() {
         return id;
@@ -31,13 +30,6 @@ public class Message {
         this.content = content;
     }
 
-    public NotificationType getType() {
-        return type;
-    }
-
-    public void setType(NotificationType type) {
-        this.type = type;
-    }
      
      
 }

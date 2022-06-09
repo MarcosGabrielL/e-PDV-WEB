@@ -6,7 +6,7 @@ package com.softsaj.egdvweb.Kafka.Services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softsaj.egdvweb.Kafka.Exception.MapperException;
-import com.softsaj.egdvweb.Kafka.Model.Message;
+import com.softsaj.egdvweb.Vendas.models.Notification;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 
 
-public class MessageService{
+public class NotificationService{
 
     private static final ObjectMapper mapper = new ObjectMapper();
   
@@ -30,8 +30,8 @@ public class MessageService{
     
 
    
-    public void send(Message notification) {
-        brokerProducerService.sendMessage(topicname, toJson(notification));
+    public void send(Notification notification) {
+        brokerProducerService.sendNotification(topicname, toJson(notification));
     }
 
 

@@ -26,7 +26,7 @@ public class BrokerProducerService {
 
     
 
-    public void sendMessage(String topic, String message) {
+    public void sendNotification(String topic, String message) {
         // the KafkaTemplate provides asynchronous send methods returning a Future
         ListenableFuture<SendResult<Integer, String>> future = kafkaTemplate.send(topic, message);
 
