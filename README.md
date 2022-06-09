@@ -1,8 +1,11 @@
 ## e-GDV 5.0 Web
 
 - Realtime web notificações e chat Usando Apache Kafka Websocket
-- Processamento assíncrono de Reqisições HTTP e AMQP com RabbitMQ para processamento de vendas ( Envio de NFe/XML com as informações fiscais transmitidas para a SEFAZ)
+- Processamento assíncrono de Reqisições HTTP e AMQP com RabbitMQ para processamento de vendas ( Enviar e Receber NFe/XML com as informações fiscais transmitidas para a SEFAZ)
 - Nfe/XML assinado digitalmente baseado no pacote javax.xml.crypto.dsig para garantir a integridade dos dados e comprovar a autoria de seu emissor.
+- Java Persistence API com Hibernet para banco de dados PostgreSQL ou MySQL
+- Test-Driven Development (TDD) com JUnit para testes unitários, JMeter para teste de carga/desempenho e Mockito para Rest API Testing
+- Cross Site Request Forgery (CSRF), Security HTTP Response Headers, HTTP e HTTP Firewall protegidos pelo Spring Security
 
 ### Inicie o zookeeper e o kafka instance com
 
@@ -59,5 +62,20 @@ kafka1:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zoo1
+ db-mysql:
+    image: mysql:5.7
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+  db-psql:
+    image: postgres:9
+    container_name: db-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
 ```
 

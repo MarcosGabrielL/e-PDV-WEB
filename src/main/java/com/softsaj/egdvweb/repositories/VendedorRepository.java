@@ -20,4 +20,7 @@ public interface VendedorRepository extends JpaRepository<Vendedor, Long> {
      
      @Query("SELECT u FROM Vendedor u WHERE u.email = ?1")
       List<Vendedor> findByEmail(String usuario);
+      
+      @Query("SELECT CASE WHEN COUNT(s) > 0 THEN TRUE ELSE FALSE END FROM Vendedor s WHERE s.Id = ?1")
+    Boolean isVendedorExitsById(Long id);
 }

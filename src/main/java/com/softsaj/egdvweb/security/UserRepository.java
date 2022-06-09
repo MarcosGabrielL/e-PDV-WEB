@@ -19,4 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
 @Query("SELECT u FROM User u WHERE u.id = ?1")
     public User findByid(Long id);
+    
+      @Query("SELECT CASE WHEN COUNT(s) > 0 THEN TRUE ELSE FALSE END FROM User s WHERE s.id = ?1")
+    Boolean isUserExitsById(Long id);
 }
