@@ -4,6 +4,7 @@
  */
 package com.softsaj.egdvweb.Kafka.Services;
 
+import com.softsaj.egdvweb.Kafka.Configuração.KafkaProducerConfig;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class BrokerProducerService {
 
+   KafkaProducerConfig KafkaProducerConfig = new KafkaProducerConfig();
     
-    private  KafkaTemplate<Integer, String> kafkaTemplate;
+    private  KafkaTemplate<Integer, String> kafkaTemplate = KafkaProducerConfig.kafkaTemplate();
 
-    @PostConstruct
-    public void Bro(KafkaTemplate<Integer, String> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
+    
 
     public void sendMessage(String topic, String message) {
         // the KafkaTemplate provides asynchronous send methods returning a Future

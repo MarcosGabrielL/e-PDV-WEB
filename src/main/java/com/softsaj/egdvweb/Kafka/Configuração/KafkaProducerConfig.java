@@ -22,13 +22,10 @@ import org.springframework.core.env.Environment;
 @Configuration
 public class KafkaProducerConfig {
     
+   
     
-   private final Environment env;
     private final String bootstrapServers = "localhost:9092";
     
-    public KafkaProducerConfig(Environment env) {
-        this.env = env;
-    }
 
     @Bean
     public Map<String, Object> producerConfigs() {

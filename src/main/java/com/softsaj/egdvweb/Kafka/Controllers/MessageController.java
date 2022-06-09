@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/message")
 public class MessageController {
     
-    @Autowired
-    private MessageService notificationService;
+    
+    private MessageService notificationService = new MessageService();
 
     
 

@@ -22,18 +22,16 @@ public class MessageService{
 
     private static final ObjectMapper mapper = new ObjectMapper();
   
-    private  BrokerProducerService brokerProducerService;
-    private  Environment env;
+    private  BrokerProducerService brokerProducerService = new BrokerProducerService();
+     private final String bootstrapServers = "localhost:9092";
+    private final String topicname = "notification";
 
-     @PostConstruct
-    public void Mes(BrokerProducerService brokerProducerService, Environment env) {
-        this.brokerProducerService = brokerProducerService;
-        this.env = env;
-    }
+   
+    
 
    
     public void send(Message notification) {
-        brokerProducerService.sendMessage(env.getProperty("producer.kafka.topic-name"), toJson(notification));
+        brokerProducerService.sendMessage(topicname, toJson(notification));
     }
 
 
