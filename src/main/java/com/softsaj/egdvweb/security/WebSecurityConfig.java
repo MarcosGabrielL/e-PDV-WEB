@@ -90,7 +90,7 @@ public CloseableHttpClient httpClient() {
         http
 	  .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/forgot_password/**","/reset_password/**",  "/process_register/**").permitAll()
+                .antMatchers("/forgot_password/**","/reset_password/**",  "/process_register/**", "/message/**").permitAll()
                 .antMatchers("/users","/perfispagamento/**","/vendedores/**","/islogged/**", 
                              "/*","/cinefilos/**", "/textoes/**","/register","/user/**",
                              "/auth/**","/files/**", "/file/**","/auth/**","/resultpagos/**",

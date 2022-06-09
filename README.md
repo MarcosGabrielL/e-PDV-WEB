@@ -1,8 +1,14 @@
 ## e-GDV 5.0 Web
 
-- Tratamento de dados Websocket em kafka para notificações e chat
+- Realtime web notificações e chat Usando Apache Kafka Websocket
 - Processamento assíncrono de Reqisições HTTP e AMQP com RabbitMQ para processamento de vendas ( Envio de NFe/XML com as informações fiscais transmitidas para a SEFAZ)
 - Nfe/XML assinado digitalmente baseado no pacote javax.xml.crypto.dsig para garantir a integridade dos dados e comprovar a autoria de seu emissor.
+
+### Inicie o zookeeper e o kafka instance com
+
+```ruby
+docker-compose up -d
+```
 
 ### No Diretorio do aplicativo use os comandos abaixo para compilar e executar o aplicativo:
 
@@ -10,6 +16,7 @@
 docker build -t springio/gs-spring-boot-docker .
 docker run -p 8080:8080 springio/gs-spring-boot-docker
 ```
+
 ### docker-compose
 
 ```ruby
@@ -24,7 +31,7 @@ services:
     volumes:
       - /data/egdvweb
     ports:
-      - "8080:8080"
+      - "8081:8081"
       
   zoo1:
     image: zookeeper:3.4.9

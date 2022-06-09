@@ -2,24 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.softsaj.egdvweb.Kafka;
+package com.softsaj.egdvweb.Kafka.Exception;
 
 /**
  *
  * @author Marcos
  */
-public class MessageRequest {
-    
-    String message;
-
-    public String getMessage() {
-        return message;
+public class MapperException extends RuntimeException {
+    public MapperException(String msg, Throwable t) {
+        super(msg, t);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public MapperException(String msg) {
+        super(msg);
     }
-    
-    
-    
 }
