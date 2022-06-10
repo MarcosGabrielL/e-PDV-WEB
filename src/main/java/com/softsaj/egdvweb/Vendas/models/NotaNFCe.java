@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.softsaj.gibgassecurity.gibgasVenda.models;
+package com.softsaj.egdvweb.Vendas.models;
 
 /**
  *
  * @author Marcos
  */
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = NotaNFCe.class)
 public class NotaNFCe {
     
     public String numero;

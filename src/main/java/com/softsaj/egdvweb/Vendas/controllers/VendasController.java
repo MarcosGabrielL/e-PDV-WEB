@@ -117,12 +117,9 @@ public class VendasController {
     
     @PostMapping("/venda")
     public ResponseEntity<Vendas> addVendas(
-            @RequestBody RequestWrapper requestWrapper,
-            @RequestParam("token") String token) {
+            @RequestBody RequestWrapper requestWrapper) {
         
-       // if(!validatetoken.isLogged(token)){
-        //     throw new IllegalStateException("token not valid");
-       // }
+      
         
        Vendas venda =  requestWrapper.getVendas();
        List<Produto> produtos = requestWrapper.getProdutos();

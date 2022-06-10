@@ -17,6 +17,13 @@
 docker-compose up -d
 ```
 
+### Baixando e instalando o RabbitMQ coma imagem do Docker 
+
+```ruby
+ # latest RabbitMQ 3.10
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.10-management
+```
+
 ### No Diretorio do aplicativo use os comandos abaixo para compilar e executar o aplicativo:
 
 ```ruby
@@ -71,5 +78,21 @@ services:
       POSTGRES_PASSWORD: root
     ports:
       - "5432:5432"
+
+ rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - rabbitmq_go_net
+
+ networks:
+  rabbitmq_go_net:
+    driver: bridge
 ```
 
