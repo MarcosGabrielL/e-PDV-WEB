@@ -4,14 +4,23 @@
  */
 package com.softsaj.egdvweb.services;
 
+import com.softsaj.egdvweb.Abstract.AbstractTest;
 import com.softsaj.egdvweb.repositories.VendedorRepository;
+import javax.ws.rs.core.Application;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
  
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
  
 /**
  *
@@ -19,21 +28,30 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 
 @ExtendWith(MockitoExtension.class)
-public class VendedorServiceTest {
+public class VendedorServiceTest extends AbstractTest {
     
-    @Mock private VendedorRepository vendedorRepo;
+    
+    @Mock
+    @Autowired
+    private VendedorRepository vendedorRepo;
  
+    @Mock
+    @Autowired
     private VendedorService vendedorService;
  
-    @BeforeEach void setUp()
-    {
+    @BeforeEach 
+    public void setUp(){
+        
+        super.setUp();
         this.vendedorService = new VendedorService();
+        
     }
  
-    @Test void getAllVendedor()
-    {
-        vendedorService.findAll();
-        verify(vendedorRepo).findAll();
-    }
+    @org.junit.Test
+   public void getAllVendedor(){
+       
+        
+        assertThat(vendedorService.findAll());
+   }
     
 }

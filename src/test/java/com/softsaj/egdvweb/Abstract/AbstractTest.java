@@ -20,6 +20,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softsaj.egdvweb.EgdvwebApplication;
+import org.junit.Test;
+import javax.ws.rs.core.Application;
+import org.junit.Before;
 
 /**
  *
@@ -34,7 +37,8 @@ public class AbstractTest {
    @Autowired
    WebApplicationContext webApplicationContext;
 
-   protected void setUp() {
+   @Test
+   public void setUp() {
       mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
    }
    protected String mapToJson(Object obj) throws JsonProcessingException {

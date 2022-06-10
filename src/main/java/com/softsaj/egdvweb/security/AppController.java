@@ -218,12 +218,11 @@ public ResponseEntity<User> processRegister(@RequestBody User user) {
 }
 
     @GetMapping("/users")
-    public String listUsers(Model model) {
+    public ResponseEntity<List<User>> listUsers(Model model) {
+        
     List<User> listUsers = userRepo.findAll();
-    model.addAttribute("listUsers", listUsers);
-     
     
-    return "users";
+    return new ResponseEntity<>(listUsers, HttpStatus.OK);
 }
 
  @GetMapping("/user/{email}")

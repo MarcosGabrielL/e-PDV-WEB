@@ -89,21 +89,14 @@ public CloseableHttpClient httpClient() {
 
         http
 	  .csrf().disable()
+                //.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/forgot_password/**","/reset_password/**",  "/process_register/**", "/message/**").permitAll()
-                .antMatchers("/users","/perfispagamento/**","/vendedores/**","/islogged/**", 
-                             "/*","/cinefilos/**", "/textoes/**","/register","/user/**",
-                             "/auth/**","/files/**", "/file/**","/auth/**","/resultpagos/**",
-                             "/preferences/**",
-                             "/eventos/**","/vendidos/**","/files/**", "/filelist/**", "/download/**",
-                             "/create/**","/generic/**","/notifications/**","/produtos/**", 
-                             "/user/**", "/cinefilos/**", "/textoes/**", "/uploadFile/**", "/file/**",
-		             "/loja/**", "/vendas/**", "/fretes/**", "/dominios/**","/register" ).authenticated()
-                .antMatchers("/authenticate")
-                .permitAll().anyRequest().authenticated()
+                .antMatchers("/forgot_password/**","/reset_password/**",  "/process_register/**", "/message/**", "/authenticate/**")
+                .permitAll()
+                .anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);;
     }
     
      
