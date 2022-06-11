@@ -24,14 +24,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQDeadLetterConfig {
-    
+    /*
     @Bean
 	DirectExchange deadLetterExchange() {
 		return new DirectExchange("deadLetterExchange");
 	}
 	
 	@Bean
-	DirectExchange exchange() {
+	DirectExchange Deadexchange() {
 		return new DirectExchange("javainuseExchange");
 	}
 
@@ -41,7 +41,7 @@ public class RabbitMQDeadLetterConfig {
 	}
 
 	@Bean
-	Queue queue() {
+	Queue Deadqueue() {
 		return QueueBuilder.durable("javainuse.queue").withArgument("x-dead-letter-exchange", "deadLetterExchange")
 				.withArgument("x-dead-letter-routing-key", "deadLetter").build();
 	}
@@ -52,18 +52,19 @@ public class RabbitMQDeadLetterConfig {
 	}
 
 	@Bean
-	Binding binding() {
-		return BindingBuilder.bind(queue()).to(exchange()).with("javainuse");
+	Binding Deadbinding() {
+		return BindingBuilder.bind(Deadqueue()).to(Deadexchange()).with("javainuse");
 	}
 
 	@Bean
-	public MessageConverter jsonMessageConverter() {
+	public MessageConverter DeadjsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
 	}
 
-	public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+	public AmqpTemplate DeadrabbitTemplate(ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-		rabbitTemplate.setMessageConverter(jsonMessageConverter());
+		rabbitTemplate.setMessageConverter(DeadjsonMessageConverter());
 		return rabbitTemplate;
 	}
+*/
 }

@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitMQConfig {
-    
+   /* 
     @Value("${javainuse.rabbitmq.queue}")
 	String queueName;
 
@@ -101,4 +101,6 @@ public class RabbitMQConfig {
 		return simpleMessageListenerContainer;
 
 	}
+        */
+        
 }

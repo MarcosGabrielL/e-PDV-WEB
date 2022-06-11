@@ -23,24 +23,24 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQTopicConfig {
-
+/*
 	@Bean
-	Queue marketingQueue() {
+	Queue topicmarketingQueue() {
 		return new Queue("marketingQueue", false);
 	}
 
 	@Bean
-	Queue financeQueue() {
+	Queue topicfinanceQueue() {
 		return new Queue("financeQueue", false);
 	}
 
 	@Bean
-	Queue adminQueue() {
+	Queue topicadminQueue() {
 		return new Queue("adminQueue", false);
 	}
 
 	@Bean
-	Queue allQueue() {
+	Queue topicallQueue() {
 		return new Queue("allQueue", false);
 	}
 
@@ -50,23 +50,23 @@ public class RabbitMQTopicConfig {
 	}
 	
 	@Bean
-	Binding marketingBinding(Queue marketingQueue, TopicExchange topicExchange) {
+	Binding topicmarketingBinding(Queue marketingQueue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(marketingQueue).to(topicExchange).with("queue.marketing");
 	}
 	
 	@Bean
-	Binding financeBinding(Queue financeQueue, TopicExchange topicExchange) {
+	Binding topicfinanceBinding(Queue financeQueue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(financeQueue).to(topicExchange).with("queue.finance");
 	}
 	
 	@Bean
-	Binding adminBinding(Queue adminQueue, TopicExchange topicExchange) {
+	Binding topicadminBinding(Queue adminQueue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(adminQueue).to(topicExchange).with("queue.admin");
 	}
 	
 	@Bean
-	Binding allBinding(Queue allQueue, TopicExchange topicExchange) {
+	Binding topicallBinding(Queue allQueue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(allQueue).to(topicExchange).with("queue.*");
 	}
-
+*/
 }
