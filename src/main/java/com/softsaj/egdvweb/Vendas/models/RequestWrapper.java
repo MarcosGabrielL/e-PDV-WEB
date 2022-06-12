@@ -36,5 +36,11 @@ public class RequestWrapper {
         this.vendas = vendas;
     }
 
+    public RequestWrapper() {
+        super();
+    }
+    
+    
+
     
 }

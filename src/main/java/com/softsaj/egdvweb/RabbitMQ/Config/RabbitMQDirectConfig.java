@@ -76,6 +76,8 @@ public class RabbitMQDirectConfig {
 	public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
+                rabbitTemplate.setReplyAddress("amq.rabbitmq.reply-to");
+                //rabbitTemplate.setUseDirectReplyToContainer(false);
 		return rabbitTemplate;
 	}
         
@@ -114,5 +116,9 @@ public class RabbitMQDirectConfig {
 		return simpleMessageListenerContainer;
 
 	}
+        
+      
+        
+        
 
 }

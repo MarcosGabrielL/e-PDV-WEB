@@ -21,6 +21,10 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.softsaj.egdvweb.Vendas.models.Vendas;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping(value = "/egdvweb-rabbitmq/direct/")
@@ -31,12 +35,12 @@ public class RabbitMQDirectWebController {
 
         //http://localhost:8080/javainuse-rabbitmq/direct/producer?exchangeName=direct-exchange&routingKey=admin&messageData=HelloWorldJavaInUse
 	@GetMapping(value = "/venda-producer")
-	public String producer(@RequestBody RequestWrapper requestWrapper) throws JsonProcessingException {
+	public ResponseEntity<Vendas> producer(@RequestBody RequestWrapper requestWrapper) throws JsonProcessingException {
             
-
-		amqpTemplate.convertAndSend("direct-exchange", "admin", mapToJson(requestWrapper));
-
-		return "Message sent to the RabbitMQ Successfully";
+                 Gson gson = new Gson();
+		 Vendas venda = gson.fromJson( new String((String) amqpTemplate.convertSendAndReceive("direct-exchange", "admin", mapToJson(requestWrapper))), 
+                         Vendas.class);
+		return new ResponseEntity<>(venda, HttpStatus.CREATED);
 	}
         
         
