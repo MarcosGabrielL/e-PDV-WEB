@@ -54,14 +54,15 @@ public class RabbitMQConsumer {
         @Autowired
         private VendidosService vds;
         
-          @Autowired
-    private EventoService es;
+        @Autowired
+        private EventoService es;
       
-       @Autowired
-    private NotificationService ns;
+        @Autowired
+        private NotificationService ns;
        
-       @Autowired
-       RabbitTemplate rabbitTemplate;
+        @Autowired
+        RabbitTemplate rabbitTemplate;
+        
  
 	@RabbitListener(queues = "adminQueue")
 	public void recievedMessage( Message message) throws InvalidDateException, JsonMappingException, IOException, JSONException {
@@ -77,7 +78,7 @@ public class RabbitMQConsumer {
         addVendidos(venda, produtos);
         salvaEvento("1",venda.getDatavenda(),"Vendas","1","Venda: "+venda.getValor(),venda.getVendedor_id());
 	
-        
+        //Gerar e enviar NFC-e
         
         Message response = new Message(mapToJson(new String(mapToJson(venda))
                 .replaceAll("^\"|\"$", "").replaceAll("\\\\","")).getBytes(),

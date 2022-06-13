@@ -5,23 +5,21 @@
  */
 package com.softsaj.egdvweb.Vendas.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Marcos
  */
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.util.Objects;
-import javax.persistence.*;
-
-
 @Entity
-@Table(name = "nfce")
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id", scope = NotaNFCe.class)
-public class NotaNFCe {
+@Table(name = "nfe")
+public class NotaNFE {
     
-     @Id
+       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
@@ -32,6 +30,15 @@ public class NotaNFCe {
     public String loja;
     public String caixa;
     public String valor;
+    public String pagamento;
+
+    public String getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(String pagamento) {
+        this.pagamento = pagamento;
+    }
 
     public String getNumero() {
         return numero;
@@ -88,6 +95,5 @@ public class NotaNFCe {
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
     
 }
