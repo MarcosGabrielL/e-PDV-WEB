@@ -5,7 +5,7 @@
  */
 package com.softsaj.egdvweb.Vendas.nfe.AcoesNFCe;
 
-import gerenciador.AcoesNfe.*;
+
 import br.com.swconsultoria.certificado.Certificado;
 import br.com.swconsultoria.certificado.CertificadoService;
 import br.com.swconsultoria.certificado.exception.CertificadoException;

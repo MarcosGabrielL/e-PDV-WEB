@@ -5,28 +5,16 @@
  */
 package com.softsaj.egdvweb.Vendas.nfe.AcoesNFCe;
 
-import gerenciador.AcoesNfe.*;
-import br.com.swconsultoria.certificado.exception.CertificadoException;
+
 import br.com.swconsultoria.nfe.Nfe;
 import br.com.swconsultoria.nfe.dom.ConfiguracoesNfe;
 import br.com.swconsultoria.nfe.dom.Evento;
 import br.com.swconsultoria.nfe.dom.enuns.DocumentoEnum;
-import br.com.swconsultoria.nfe.exception.NfeException;
-import br.com.swconsultoria.nfe.util.ConstantesUtil;
-import br.com.swconsultoria.nfe.util.XmlNfeUtil;
 import br.com.swconsultoria.nfe.schema.envEventoCancNFe.TEnvEvento;
-import br.com.swconsultoria.nfe.schema.envEventoCancNFe.TEvento;
-import br.com.swconsultoria.nfe.schema.envEventoCancNFe.TProcEvento;
 import br.com.swconsultoria.nfe.schema.envEventoCancNFe.TRetEnvEvento;
 import br.com.swconsultoria.nfe.util.CancelamentoUtil;
 import br.com.swconsultoria.nfe.util.RetornoUtil;
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
-import javax.xml.bind.JAXBException;
 
 /**
  *

@@ -5,12 +5,9 @@
  */
 package com.softsaj.egdvweb.Vendas.nfe.AcoesNFCe;
 
-import gerenciador.AcoesNfe.*;
 import br.com.swconsultoria.nfe.Nfe;
 import br.com.swconsultoria.nfe.dom.ConfiguracoesNfe;
 import br.com.swconsultoria.nfe.dom.enuns.DocumentoEnum;
-import br.com.swconsultoria.nfe.exception.NfeException;
-import br.com.swconsultoria.nfe.util.ConstantesUtil;
 import br.com.swconsultoria.nfe.schema_4.retConsStatServ.TRetConsStatServ;
 
 
